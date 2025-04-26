@@ -10,23 +10,19 @@ int main() {
     int x;
     cin >> op >> x;
 
-    cout << i + 1 << ":";
-
     if (op == "+") {
       A += x;
     } else if (op == "-") {
       A -= x;
     } else if (op == "*") {
       A *= x;
-    } else if (op == "/") {
-      if (x == 0) {
-        cout << "error" << endl;
-        return 0;
-      }
+    } else if (op == "/" && x != 0) {
       A /= x;
+    } else {
+      cout << "error" << endl;
+      break;
     }
-
-    cout << A << endl;
-
+    cout << i + 1 << ":" << A << endl;
   }
+  
 }
