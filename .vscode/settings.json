@@ -6,6 +6,8 @@
     "4_abc081b": "cpp",
     "algorithm": "cpp",
     "string_view": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "chrono": "cpp",
+    "complex": "cpp"
   }
 }
