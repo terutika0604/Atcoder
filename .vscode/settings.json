@@ -4,6 +4,8 @@
     "iostream": "cpp",
     "random": "cpp",
     "4_abc081b": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "string_view": "cpp",
+    "regex": "cpp"
   }
 }
