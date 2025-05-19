@@ -34,20 +34,14 @@ struct Clock {
   //     時刻の文字列は次のフォーマット
   //     "HH:MM:SS"
   //     HH、MM、SSはそれぞれ時間、分、秒を2桁で表した文字列
-  srting to_str() {
+  string to_str() {
     string h_st = "", m_st = "", s_st = "";
-    if (hour < 10) {
-      h_st = "0" + to_string(hour);
-    } else {
-      h_st = to_string(hour);
-    }
 
-    string h_st = "", m_st = "", s_st = "";
-    if (hour < 10) {
-      h_st = "0" + to_string(hour);
-    } else {
-      h_st = to_string(hour);
-    }
+    h_st = (hour < 10) ? "0" + to_string(hour) : to_string(hour);
+
+    m_st = (minute < 10) ? "0" + to_string(minute) : to_string(minute);
+    
+    s_st = (second < 10) ? "0" + to_string(second) : to_string(second);
 
     return h_st + ":" + m_st + ":" + s_st;
   }
@@ -61,6 +55,43 @@ struct Clock {
   //     diff_second の値が負の場合、時刻を戻す
   //     diff_second の値が正の場合、時刻を進める
   //     diff_second の値は -86400 ~ 86400 の範囲を取とりうる
+  void shift(int diff_second) {
+    int shift_hour = diff_second / 3600;
+    int tmp = diff_second % 3600;
+    int shift_minute = tmp / 60;
+    int shift_second = tmp % 60;
+
+    second += shift_second;
+
+    if (second < 0) {
+      second += 60;
+      minute -= 1;
+    }
+    if(second >= 60) {
+      second -= 60;
+      minute += 1;
+    }
+
+    minute += shift_minute;
+    
+    if (minute < 0) {
+      minute += 60;
+      hour -= 1;
+    }
+    if(minute >= 60) {
+      minute -= 60;
+      hour += 1;
+    }
+
+    hour += shift_hour;
+    
+    if (hour < 0) {
+      hour += 24;
+    }
+    if(hour >= 24) {
+      hour -= 24;
+    }
+  }
 };
 
 
