@@ -1,3 +1,6 @@
+// 深さ優先探索
+// 他の人の回答
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
