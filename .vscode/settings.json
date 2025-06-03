@@ -10,6 +10,12 @@
     "chrono": "cpp",
     "complex": "cpp",
     "bitset": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "string": "cpp",
+    "valarray": "cpp",
+    "charconv": "cpp"
   }
 }
