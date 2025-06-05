@@ -1,3 +1,5 @@
+// https://atcoder.jp/contests/apg4b/tasks/APG4b_bw
+
 #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,9 +30,8 @@ int read_int(map<string, int> &var_int) {
   string s;
   cin >> s;
   if (isdigit(s[0])) {
-      return stoi(s);
-  }
-  else {
+    return stoi(s);
+  } else {
     return var_int[s];
   }
 }
@@ -43,19 +44,23 @@ int calc_int(map<string, int> &var_int) {
   bool is_next_ope_add = true;
   while (true) {
     if (i % 2 == 0) {
-      if (is_next_ope_add) total += read_int(var_int);
-      else total -= read_int(var_int);
-    }
-    else {
+      if (is_next_ope_add)
+        total += read_int(var_int);
+      else
+        total -= read_int(var_int);
+    } else {
       string s;
       cin >> s;
-      if (s == "+") is_next_ope_add = true;
-      if (s == "-") is_next_ope_add = false;
-      if (s == ";") break;
+      if (s == "+")
+        is_next_ope_add = true;
+      if (s == "-")
+        is_next_ope_add = false;
+      if (s == ";")
+        break;
     }
     i++;
   }
-  
+
   return total;
 }
 
@@ -68,19 +73,20 @@ vector<int> read_vec_val(map<string, int> &var_int) {
   while (true) {
     string s;
     cin >> s;
-    if (s == "]") break;
-    if (s == ",") continue;
+    if (s == "]")
+      break;
+    if (s == ",")
+      continue;
 
     if (isdigit(s[0])) {
       result.push_back(stoi(s));
-    }
-    else {
+    } else {
       result.push_back(var_int[s]);
     }
 
     i++;
   }
-  
+
   return result;
 }
 
@@ -94,7 +100,8 @@ vector<int> read_vec(map<string, int> &var_int, map<string, vector<int>> &var_ve
   cin >> s;
 
   // []
-  if (s == "[") return read_vec_val(var_int);
+  if (s == "[")
+    return read_vec_val(var_int);
 
   // a
   return var_vec[s];
@@ -111,28 +118,32 @@ vector<int> calc_vec(map<string, int> &var_int, map<string, vector<int>> &var_ve
     // 1文字目
     vector<int> vec = read_vec(var_int, var_vec);
 
-    if(i == 0) {
+    if (i == 0) {
       result = vec;
     } else {
       rep(j, 0, result.size()) {
-        if(is_next_ope_add) result.at(j) += vec.at(j);
-        else result.at(j) -= vec.at(j);
+        if (is_next_ope_add)
+          result.at(j) += vec.at(j);
+        else
+          result.at(j) -= vec.at(j);
       }
     }
-    
+
     // 2文字目
     string s;
     cin >> s;
-    if (s == "+") is_next_ope_add = true;
-    if (s == "-") is_next_ope_add = false;
-    if (s == ";") break;
-    
+    if (s == "+")
+      is_next_ope_add = true;
+    if (s == "-")
+      is_next_ope_add = false;
+    if (s == ";")
+      break;
+
     i++;
   }
 
   return result;
 }
-
 
 int main() {
 
@@ -140,7 +151,7 @@ int main() {
   int N;
   cin >> N;
 
-  map<string, int> var_int; // intの変数を管理するmap
+  map<string, int> var_int;         // intの変数を管理するmap
   map<string, vector<int>> var_vec; // vectorの変数を管理するmap
 
   // 行数分の処理
@@ -149,7 +160,7 @@ int main() {
     // 命令を受け取る
     string s;
     cin >> s;
-    
+
     // int命令の処理
     if (s == "int") {
       // 変数名を読み取る
