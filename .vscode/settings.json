@@ -23,6 +23,8 @@
     "initializer_list": "cpp",
     "ranges": "cpp",
     "span": "cpp",
-    "stacktrace": "cpp"
+    "stacktrace": "cpp",
+    "any": "cpp",
+    "functional": "cpp"
   }
 }
