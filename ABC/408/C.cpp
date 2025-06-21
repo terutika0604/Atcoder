@@ -1,4 +1,4 @@
-//　いもす法
+// 　いもす法
 
 #define _GLIBCXX_DEBUG
 #include <bits/stdc++.h>
@@ -22,19 +22,15 @@ int main() {
     // transform(wall_table.begin() + L - 1, wall_table.begin() + R, wall_table.begin() + L - 1,
     //                [](int x) { return x + 1; });
 
-    //　いもす法による回答
+    // 　いもす法による解答
     wall_table.at(L - 1)++;
     wall_table.at(R)--;
   }
-  
-  //　いもす法による回答
-  // O(MN) ➝ O(M+N)
-  rep(i, 1, N + 1) {
-    wall_table.at(i) += wall_table.at(i - 1);
-  }
+
+  // 　いもす法による解答
+  //  O(MN) ➝ O(M+N)
+  rep(i, 1, N + 1) { wall_table.at(i) += wall_table.at(i - 1); }
 
   auto min_it = min_element(wall_table.begin(), wall_table.end() - 1);
   cout << *min_it << endl;
-
-  
 }

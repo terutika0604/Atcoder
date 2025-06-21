@@ -11,7 +11,7 @@ void saiten(vector<vector<int>> &A, int &correct_count, int &wrong_count) {
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       // 正誤判定
-      if (A.at(i).at(j) == (i + 1) * (j + 1) ) {
+      if (A.at(i).at(j) == (i + 1) * (j + 1)) {
         correct_count += 1;
       } else {
         wrong_count += 1;
@@ -19,15 +19,13 @@ void saiten(vector<vector<int>> &A, int &correct_count, int &wrong_count) {
       }
     }
   }
-
 }
-
 
 // -------------------
 // ここから先は変更しない
 // -------------------
 int main() {
-  // A君の回答を受け取る
+  // A君の解答を受け取る
   vector<vector<int>> A(9, vector<int>(9));
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
@@ -45,8 +43,10 @@ int main() {
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       cout << A.at(i).at(j);
-      if (j < 8) cout << " ";
-      else cout << endl;
+      if (j < 8)
+        cout << " ";
+      else
+        cout << endl;
     }
   }
   // 正しいマスの個数を出力
