@@ -35,3 +35,8 @@ void displayVV(auto VV) {
   }
   cout << " ]" << endl;
 }
+
+void displayMap(auto m) {
+  for (const auto &[k, v] : m)
+    cout << "(" << k << ":" << v << ") ";
+}
