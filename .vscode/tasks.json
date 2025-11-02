@@ -11,6 +11,8 @@
                 "-Wextra",
                 "-O2",
                 "-DONLINE_JUDGE",
+                "-I",
+                "${workspaceFolder}",
                 "-o",
                 "'${workspaceFolder}/program'",
                 "'${file}'",

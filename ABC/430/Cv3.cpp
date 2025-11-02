@@ -1,6 +1,7 @@
 // 累積和×2分探索
 // 普通の2分探索（すべての値を網羅する）
 
+#include "utils.hpp"
 #include <bits/stdc++.h>
 using namespace std;
 #define rep(i, start, end) for (int i = (int)(start); i < (int)(end); ++i)
