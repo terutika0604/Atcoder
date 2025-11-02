@@ -1,50 +1,53 @@
-// 累積和としゃくとり？解けず、、
-// TLE
+// しゃくとり法（尺取り法）
+// 今回のようにｒが左側に戻らないケースなら使える
+// https://atcoder.jp/contests/abc430/submissions/70633012
+// https://www.youtube.com/live/W9jftsWrLQA
 
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i, start, end) for (int i = (int)(start); i < (int)(end); ++i)
+#define rep(i, n) for (int i = 0; i < (n); ++i)
 using ll = long long;
-using P = pair<int, int>;
-using PQ = priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>>;
-const ll INF = 1LL << 60;
 
 int main() {
   int N, A, B;
-  cin >> N >> A >> B;
+  string S;
+  cin >> N >> A >> B >> S;
 
-  int l = 0;
-  set<P> ranges;
-  vector<int> a(N + 1, 0), b(N + 1, 0);
-
-  rep(i, 1, N + 1) {
-    char c;
-    cin >> c;
-
-    if (c == 'a') {
-      a[i] = a[i - 1] + 1;
-      b[i] = b[i - 1];
-    } else {
-      a[i] = a[i - 1];
-      b[i] = b[i - 1] + 1;
+  ll ans = 0;
+  int ra = 0, count_a = 0;
+  int rb = 0, count_b = 0;
+  rep(l, N) {
+    // A個のaを満たすためにraを進める
+    // raはaがA個以上となる最小の右端を指す
+    while (ra < N && count_a < A) {
+      if (S[ra] == 'a')
+        count_a++;
+      ra++;
     }
+    // aがA個以上とならなかった場合
+    if (ra == N && count_a < A)
+      ra++;
+
+    // B個のbを満たすためにrbを進める
+    // rbはbがB個以上となる最小の右端を指す
+    while (rb < N && count_b < B) {
+      if (S[rb] == 'b')
+        count_b++;
+      rb++;
+    }
+    // bがB個以上とならなかった場合
+    if (rb == N && count_b < B)
+      rb++;
+
+    ans += max(0, rb - ra);
+
+    // lが進む＝最初の一文字目を消す必要がある
+    if (S[l] == 'a')
+      count_a--;
+    if (S[l] == 'b')
+      count_b--;
   }
 
-  rep(r, 0, N) {
-    int nowA = a[r + 1] - a[l];
-    int nowB = b[r + 1] - b[l];
-
-    if (nowA < A) {
-      continue;
-    }
-    if (nowB >= B) {
-      r = l;
-      ++l;
-      continue;
-    }
-
-    ranges.insert({l, r});
-  }
-
-  cout << ranges.size() << endl;
+  cout << ans << endl;
+  return 0;
 }
